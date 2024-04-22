@@ -5,10 +5,10 @@ public class Bully {
     int max_processes;
     boolean processes[];
  
-    //// Define a constructor for the Bully class that takes the maximum number of processes as input 
+    // Define a constructor for the Bully class that takes the maximum number of processes as input 
     public Bully(int max) {
-        max_processes = max;// // Set the maximum number of processes
-        processes = new boolean[max_processes];//// Create a boolean array to represent the status of each process
+        max_processes = max;// Set the maximum number of processes
+        processes = new boolean[max_processes];// Create a boolean array to represent the status of each process
         coordinator = max;// Initially, set the coordinator to the highest process ID
 
         System.out.println("Creating processes..");
@@ -21,18 +21,18 @@ public class Bully {
     }
     void displayProcesses() {
         for(int i = 0; i < max_processes; i++) {
-            if(processes[i]) //// Check if the current process is up
+            if(processes[i]) // Check if the current process is up
             {
                 System.out.println("P" + (i+1) + " is up");
             } else {
-                System.out.println("P" + (i+1) + " is down");/// If the process is down, print a message indicating it's down
+                System.out.println("P" + (i+1) + " is down");// If the process is down, print a message indicating it's down
             }
         }
         System.out.println("Process P" + coordinator + " is the coordinator");
     }
 
     void upProcess(int process_id) {
-        if(!processes[process_id - 1])//// Check if the process is already down
+        if(!processes[process_id - 1])// Check if the process is already down !=true
         {
             processes[process_id - 1] = true;
             System.out.println("Process " + process_id + " is now up.");
@@ -42,7 +42,7 @@ public class Bully {
     }
 
     void downProcess(int process_id) {
-        if(!processes[process_id - 1]) {
+        if(!processes[process_id - 1]) {       //!=true =>false 
             System.out.println("Process " + process_id + " is already down.");
         } else {
             processes[process_id - 1] = false;

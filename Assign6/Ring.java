@@ -3,8 +3,8 @@ import java.util.*;
 public class Ring {
     int max_processes;
     int coordinator;
-    boolean processes[];//// Array to represent the status of each process (up or down)
-    ArrayList<Integer> pid;
+    boolean processes[];// Array to represent the status of each process (up or down)
+    ArrayList<Integer> pid;// ArrayList to store process IDs during election
 
     // Constructor to initialize the Ring object with the maximum number of processes
     public Ring(int max) {
@@ -58,9 +58,9 @@ public class Ring {
     }
 
     void initElection(int process_id) {
-        if(processes[process_id-1])//// Checking if the initiating process is up
+        if(processes[process_id-1])//Checking if the initiating process is up
          {
-            pid.add(process_id);//// Adding the initiating process ID to the pid ArrayList
+            pid.add(process_id);// Adding the initiating process ID to the pid ArrayList
 
             int temp = process_id;
 

@@ -6,7 +6,7 @@ public class Server{
 	
 		try{
 			ServerImpl serverImpl = new ServerImpl();//ServerImpl cha object created
-			Naming.rebind("Server", serverImpl);//Object register in rmi 
+			Naming.rebind("Server", serverImpl);// register an object with a name in the RMI registry.
 			
 			System.out.println("Server Started....");
 		

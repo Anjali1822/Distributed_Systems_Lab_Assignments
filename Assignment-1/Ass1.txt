@@ -1,0 +1,93 @@
+import java.rmi.*;
+
+
+interface ServerIntf extends Remote{
+
+	//method declaration: access_specifier return_type method_name(arguments...){ return value}
+	public String stringJoin(String str1, String str2) throws RemoteException;
+	public double addition(double n1,double n2) throws RemoteException;
+}
+==================================================================================================
+
+import java.rmi.*;
+import java.rmi.server.*;
+
+public class ServerImpl extends UnicastRemoteObject //we will call the methods remotly until server is start 
+	implements ServerIntf {
+	
+		//constructor
+		public ServerImpl() throws RemoteException{
+		}
+        
+		//declare all the metehods here
+		public String stringJoin(String str1, String str2) throws RemoteException{
+			String result = str1 + str2;
+
+			return result;
+		}
+
+		public double addition(double n1,double n2) throws RemoteException{
+			return n1+n2;
+		}
+}
+=========================================================================================================================
+import java.rmi.*;
+
+public class Server{
+	
+	public static void main(String[] args){
+	
+		try{
+			ServerImpl serverImpl = new ServerImpl();//ServerImpl cha object created
+			Naming.rebind("Server", serverImpl);//register an object with a name in the RMI registry.
+			
+			System.out.println("Server Started....");
+		
+		}catch(Exception e){
+			System.out.println("Exception Occurred At Server!" + e.getMessage());
+		}
+	}
+	
+	
+}
+========================================================================================
+import java.rmi.*;
+import java.util.Scanner;
+
+public class Client{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		
+		try{
+			String serverURL = "rmi://localhost/Server";
+			ServerIntf serverIntf = (ServerIntf) Naming.lookup(serverURL);//
+			
+			System.out.print("Enter First String: ");
+			String str1 = sc.nextLine();
+			
+			System.out.print("Enter Second String: ");
+			String str2 = sc.nextLine();
+			
+			
+		    System.out.print("Enter First Number: ");
+			double n1= sc.nextDouble();
+			
+			System.out.print("Enter Second Number: ");
+			double n2= sc.nextDouble();
+
+			System.out.println("--------------- Results ---------------");
+			System.out.println("Strings After Joining Is: " + serverIntf.stringJoin(str1, str2));
+			System.out.println("Addition of Number is : "+serverIntf.addition(n1,n2));
+			
+		}catch(Exception e){
+			System.out.println("Exception Occurred At Client!" + e.getMessage());
+		}
+		
+	}
+}
+=======================================================================
+TO run :
+javac *.java
+rmiregistry
+java Server (on new Terminal)
+java Client
