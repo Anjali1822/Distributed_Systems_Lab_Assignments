@@ -19,3 +19,4 @@ public class ServerImpl extends UnicastRemoteObject //we will call the methods r
 			return n1+n2;
 		}
 }
+//UnicastRemoteObject is a class used in Java's RMI framework to export remote objects, and in your code, it enables the ServerImpl class to be accessed remotely by clients over the network.

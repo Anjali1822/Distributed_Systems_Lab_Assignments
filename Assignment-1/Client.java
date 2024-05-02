@@ -6,7 +6,7 @@ public class Client{
 		Scanner sc = new Scanner(System.in);
 		
 		try{
-			String serverURL = "rmi://localhost/Server";
+			String serverURL = "rmi://localhost/Server";// URL of the remote server
 			ServerIntf serverIntf = (ServerIntf) Naming.lookup(serverURL);//
 			
 			System.out.print("Enter First String: ");

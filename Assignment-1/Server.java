@@ -1,7 +1,5 @@
 import java.rmi.*;
-
 public class Server{
-	
 	public static void main(String[] args){
 	
 		try{
@@ -13,7 +11,5 @@ public class Server{
 		}catch(Exception e){
 			System.out.println("Exception Occurred At Server!" + e.getMessage());
 		}
-	}
-	
-	
+	}	
 }
