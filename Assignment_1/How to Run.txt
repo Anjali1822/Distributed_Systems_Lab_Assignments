@@ -1,0 +1,5 @@
+TO run :
+javac *.java
+rmiregistry
+java Server (on new Terminal)
+java Client
